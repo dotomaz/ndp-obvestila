@@ -5,7 +5,7 @@ class MainStore{
 	
 	ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 	
-	static URL = "http://nogomet-polzela.si/api/json/obvestila";
+	static URL = "https://nogomet-polzela.si/api/json/obvestila";
 
 	cache = {};
 
@@ -13,6 +13,11 @@ class MainStore{
 	@observable state = "done"
 	@observable error = ""
 	@observable selekcija = "vsi"
+
+	@action reload(){
+		this.cache = {};
+		this.loadObvestila();
+	}
 
 
 	@computed get obvestilaDS(){
@@ -64,6 +69,7 @@ class MainStore{
 
 			list.forEach((el, i)=>{
 				let td = this.getCompareSateString(el.date);
+				console.log(td, dd);
 				if( td != dd){
 					// insert header row for all notifications on the same day
 					out.push({
@@ -84,7 +90,7 @@ class MainStore{
 
 	getCompareSateString(date){
 
-		const d = new Date(date);
+		const d = this.str2Date(date);
 		const m = d.getMonth()+1;
 		const dd = d.getDate();
 
@@ -93,14 +99,20 @@ class MainStore{
 	}
 
 	formatDate( date ) {
-		const dan = ["ponedeljek","torek","sreda","črtrtek","petek","sobota","nedelja"];
+		const dan = ["nedelja","ponedeljek","torek","sreda","črtrtek","petek","sobota"];
 		const mesec = ["januar","februar","marec","april","maj","junij","julij","avgust","september","oktober","november","december"];
 
+		const d = this.str2Date(date);		
+
+		return dan[d.getDay()]+", "+ d.getDate()+". "+ mesec[d.getMonth()]+ " " + d.getFullYear();
+	}
+
+	str2Date(date){
 		const tt = date.split(" ");
 		const tt0 = tt[0].split("-");
 		const tt1 = tt[1].split(":");
 
-		const d = new Date(
+		return  new Date(
 			parseInt(tt0[0],10),
 			parseInt(tt0[1],10)-1,
 			parseInt(tt0[2],10),
@@ -108,8 +120,6 @@ class MainStore{
 			parseInt(tt1[1],10),
 			parseInt(tt1[2],10)
 		);
-
-		return dan[d.getDay()]+", "+ d.getDate()+". "+ mesec[d.getMonth()]+ " " + d.getFullYear();
 	}
 
 	@action setSelekcija(selekcija){

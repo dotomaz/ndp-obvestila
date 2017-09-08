@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 import { Header } from 'react-native-elements'
-import Icon from '@expo/vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/dist/Ionicons';
 import {observer} from "mobx-react";
 
 @observer class ObvestilaScreen extends React.Component {
@@ -84,7 +84,10 @@ import {observer} from "mobx-react";
 				<View style={styles.row}>
 					<View style={styles.rowTextContainer}>
 						<View style={styles.rowTextContainer2}>
-							<Text style={styles.rowTextType}>{rowData.type.toUpperCase()}</Text>
+							<View style={styles.rowTextTyprContainer}>
+								<Image style={styles.rowTextTypeImage} source={require("../img/icon-80.png")} resizeMode="contain"/>
+								<Text style={styles.rowTextType}>{rowData.type.toUpperCase()}</Text>
+							</View>
 							<Text style={styles.rowText}>{rowData.content}</Text>
 
 						</View>
@@ -145,6 +148,15 @@ import {observer} from "mobx-react";
 						text: titles[this.props.navigation.state.routeName], 
 						style: { color: '#fff', fontSize: 20 } 
 					}} 
+
+					rightComponent={{ 
+						icon: 'autorenew', 
+						color: '#fff', 
+						onPress:() => {
+							const {store} = this.props.screenProps;
+							store.reload();
+						} 
+					}}
 				/>
 
 				<ListView style={styles.contents} dataSource={store.obvestilaDS} renderRow={ this.renderRow } enableEmptySections={true} {...this.props}/>
@@ -197,13 +209,14 @@ const styles = StyleSheet.create({
 	},
 
 	row:{
-		
+		backgroundColor: "#eee",
+		padding: 5
 	},
 
 	rowDateContainer:{
 		backgroundColor: "#eee",
-		paddingBottom: 10,
-		paddingTop: 20,
+		paddingBottom: 0,
+		paddingTop: 10,
 		paddingLeft: 10,
 		paddingRight: 10
 	},
@@ -222,29 +235,43 @@ const styles = StyleSheet.create({
 	},
 
 	rowText:{
-		fontSize: 18,
+		fontSize: 16,
 		color: "#444",
 	},
 
+	rowTextTypeImage:{
+		width: 40,
+		height: 40,
+		marginRight: 10,
+	},
+
+	rowTextTyprContainer:{
+		flexDirection: "row",
+		alignItems: "center",
+		marginBottom: 10
+
+	},
+
 	rowTextType:{
-		fontSize: 20,
+		fontSize: 18,
 		color: "#444",
 		fontWeight: "bold",
-		marginBottom: 10
+		
 	},
 
 	rowTextContainer2:{
 		flex:1,
-		borderBottomWidth:1,
-		borderBottomColor: "#ccc",
+		//borderBottomWidth:1,
+		//borderBottomColor: "#ccc",
 		//backgroundColor: "#fcc",
 		paddingBottom: 20,
 		paddingTop: 20
 	},
 
 	rowTextContainer:{
-		paddingLeft: 20,
-		paddingRight: 20,
+		backgroundColor: "#fff",
+		paddingLeft: 10,
+		paddingRight: 10,
 		flexDirection: "row",
 		alignItems: "center"
 

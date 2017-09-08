@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { DrawerItems } from 'react-navigation';
 
-import Icon from '@expo/vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/dist/Ionicons';
 
 
 
