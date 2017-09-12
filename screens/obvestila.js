@@ -9,7 +9,7 @@ import {
 	TouchableHighlight
 } from 'react-native';
 
-import { Header } from 'react-native-elements'
+import { Header, ButtonGroup } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 import {observer} from "mobx-react";
 
@@ -21,6 +21,15 @@ import {observer} from "mobx-react";
 	      <Icon style={[styles.icon, {color: tintColor}]} name="ios-football" />
 	    ),
 	  };
+
+
+	constructor () {
+		super()
+		this.state = {
+			selectedIndex: 0
+		}
+		this.updateGroupIndex = this.updateGroupIndex.bind(this)
+	}  
 
 	componentWillMount() {
 		
@@ -47,8 +56,15 @@ import {observer} from "mobx-react";
 
 	_onPressButton(icon)
 	{
-		console.log("You touched: "+ icon);
 		this.props.navigation.navigate('DrawerClose');
+	}
+
+	updateGroupIndex(index){
+		const {store} = this.props.screenProps;
+
+		if( store.selectedGroupId !== index){
+			store.setSelectedGroupId(index);
+		}
 	}
 
 	renderRow(rowData){
@@ -96,6 +112,37 @@ import {observer} from "mobx-react";
 			);
 		}
 
+		const getTekmaRow= ( rowData ) => {
+
+			let tEkipi = rowData.ekipi.split(":");
+			let domaci = tEkipi[0].trim();
+			let gosti = tEkipi[1].trim();
+			let headerStyle = function(domaci){
+				return ( domaci.toLowerCase().indexOf("polzela") >= 0) ? styles.tekmaHeaderDoma: styles.tekmaHeaderVGosteh;
+			} 
+
+			return (
+				<View style={styles.tekma}>
+					<View style={styles.tekmaContainer}>
+						<View style={headerStyle(domaci)}>
+							<Text style={styles.tekmaHeaderTxt}>{rowData.selekcija.replace(/u/gi, "U - ")+" : "+rowData.igrisce}</Text>
+						</View>	
+						<View style={styles.tekmaContainer2}>
+							<View style={styles.tekmaDoma}>
+								<Text style={styles.txtRight}>{domaci}</Text>
+							</View>
+							<View style={styles.tekmaVs}>
+								<Text style={styles.txtLeft}>:</Text>
+							</View>
+							<View style={styles.tekmaGosti}>
+								<Text style={styles.txtLeft}>{gosti}</Text>
+							</View>
+						</View>
+					</View>
+				</View>
+			);
+		}
+
 		const getHeader= ( rowData ) => {
 			return (
 				<View style={styles.row}>
@@ -115,6 +162,8 @@ import {observer} from "mobx-react";
 			return getError(rowData);
 		}else if(rowData.type === "header"){
 			return getHeader(rowData);
+		}else if(rowData.type === "tekma"){
+			return getTekmaRow(rowData);
 		}else{
 			return getRow(rowData);
 		}
@@ -132,7 +181,11 @@ import {observer} from "mobx-react";
 			"U15": "Obvestila za U15",
 		};
 
+		const { selectedIndex } = this.state;
+
 		return (
+
+
 
 			<View style={styles.container}>
 				<Header 
@@ -144,10 +197,21 @@ import {observer} from "mobx-react";
 							this.props.navigation.navigate("DrawerOpen"); 
 						} 
 					}}
-					centerComponent={{ 
-						text: titles[this.props.navigation.state.routeName], 
-						style: { color: '#fff', fontSize: 20 } 
-					}} 
+					
+					
+					centerComponent={
+						<ButtonGroup
+					      onPress={this.updateGroupIndex}
+					      selectedIndex={store.selectedGroupId}
+					      buttons={["Obvestila","Tekme"]}
+					      containerStyle={{height: 30, width: 250, backgroundColor: "#f11"}}
+					      textStyle={{ color: "#fff"}}
+					      selectedBackgroundColor="#fff"
+					      disableSelected={true}
+					       />
+					}
+					
+
 
 					rightComponent={{ 
 						icon: 'autorenew', 
@@ -261,9 +325,6 @@ const styles = StyleSheet.create({
 
 	rowTextContainer2:{
 		flex:1,
-		//borderBottomWidth:1,
-		//borderBottomColor: "#ccc",
-		//backgroundColor: "#fcc",
 		paddingBottom: 20,
 		paddingTop: 20
 	},
@@ -275,7 +336,21 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignItems: "center"
 
-	}
+	},
 
 
+	tekma: { padding:0 },
+	tekmaContainer: {},
+	tekmaHeaderDoma: { backgroundColor: "#cdffe4", paddingTop: 5, paddingRight: 5, paddingBottom: 5, paddingLeft: 15},
+	tekmaHeaderVGosteh: { backgroundColor: "#ffc9c9", paddingTop: 5, paddingRight: 5, paddingBottom: 5, paddingLeft: 15},
+	tekmaHeaderTxt: { textAlign: "left", fontSize:17},
+	tekmaContainer2: { flexDirection: "row"},
+	tekmaDoma: { flex: 1,  paddingTop: 20, paddingBottom: 20, paddingRight: 10 },
+	tekmaGosti: { flex:1, paddingTop: 20, paddingBottom: 20, paddingLeft: 10 },
+	tekmaVs: { flex:0, paddingTop: 20, paddingBottom: 20 },
+	txtRight: {textAlign: "right", fontWeight: "bold", fontSize: 18},
+	txtLeft: {textAlign: "left", fontWeight: "bold", fontSize: 18},
+	tekmaSelekcija: {paddingTop: 10},
+	txtSelekcija: {textAlign: "center", fontSize: 18}
+	
 })

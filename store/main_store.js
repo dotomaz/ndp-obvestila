@@ -6,17 +6,28 @@ class MainStore{
 	ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 	
 	static URL = "https://nogomet-polzela.si/api/json/obvestila";
+	static URL_TEKME = "https://nogomet-polzela.si/api/json/tekme";
 
 	cache = {};
+	cache_tekme = {};
 
 	@observable obvestila = []
+	@observable tekme = []
 	@observable state = "done"
 	@observable error = ""
 	@observable selekcija = "vsi"
+	@observable selectedGroupId = 0
 
 	@action reload(){
-		this.cache = {};
-		this.loadObvestila();
+
+		if( this.selectedGroupId == 1 ){
+			this.cache = {};
+			this.loadTekme();
+		}else{
+			this.cache = {};
+			this.loadObvestila();
+		}
+		
 	}
 
 
@@ -36,13 +47,19 @@ class MainStore{
 			break;
 
 			default:
-
-				let tt = this.obvestila.slice();
+				
+				let tt = [];
+				
+				if( this.selectedGroupId == 1 ){
+					tt = this.tekme.slice();
+				}else{
+					tt = this.obvestila.slice();
+				}
 
 				if (tt.length == 0){
 					return this.ds.cloneWithRows([{
 						type:"no-data",
-						text: "Ni obvestil."
+						text: ( this.selectedGroupId == 1 ) ? "Ni tekem." : "Ni obvestil."
 					}]);
 				}else{
 					return this.ds.cloneWithRows(this.prepareForDS(tt));
@@ -63,13 +80,14 @@ class MainStore{
 			out = [
 				{
 					type: "header",
-					text: this.formatDate(list[0].date)
+					text: ( this.selectedGroupId == 1 ) ? this.formatDate(list[0].date) +" ob "+ this.formatTime(list[0].date) : 
+														  this.formatDate(list[0].date)
 				}
 			]
 
 			list.forEach((el, i)=>{
 				let td = this.getCompareSateString(el.date);
-				console.log(td, dd);
+				//console.log(td, dd);
 				if( td != dd){
 					// insert header row for all notifications on the same day
 					out.push({
@@ -107,6 +125,13 @@ class MainStore{
 		return dan[d.getDay()]+", "+ d.getDate()+". "+ mesec[d.getMonth()]+ " " + d.getFullYear();
 	}
 
+	formatTime( date ) {
+		const d = this.str2Date(date);		
+
+		return ( d.getHours() < 10 ? "0" + d.getHours() : d.getHours() ) + ":" +
+				( d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes() );
+	}
+
 	str2Date(date){
 		const tt = date.split(" ");
 		const tt0 = tt[0].split("-");
@@ -124,7 +149,23 @@ class MainStore{
 
 	@action setSelekcija(selekcija){
 		this.selekcija = selekcija.toLowerCase();
-		this.loadObvestila();
+
+		if( this.selectedGroupId == 1 ){
+			this.loadTekme();
+		}else{
+			this.loadObvestila();
+		}
+
+	}
+
+	@action setSelectedGroupId(index){
+		this.selectedGroupId = index;
+
+		if( this.selectedGroupId == 1 ){
+			this.loadTekme();
+		}else{
+			this.loadObvestila();
+		}
 	}
 
 	@action loadObvestila(){
@@ -158,6 +199,50 @@ class MainStore{
 					this.cache[this.selekcija] = responseJson.data;
 					// update data -> mobix will update the component
 					this.obvestila = responseJson.data;
+                    this.state = "done";
+                });
+			},
+			(error)=>{
+				runInAction(() => {
+					this.error = error;
+                });
+			}
+		);
+			 
+		
+	}
+
+	@action loadTekme(){
+		this.state = "pending";
+		this.tekme = [];
+
+		// read from cache
+
+		if( typeof this.cache_tekme[this.selekcija] !== "undefined" ){
+			// update data -> mobix will update the component
+			this.tekme = this.cache_tekme[this.selekcija];
+			this.state = "done";
+			return;
+		}
+
+		// Get the correct endpoint
+
+		let url = MainStore.URL_TEKME;
+		if(this.selekcija.length == 0 || this.selekcija !== "vsi"){
+			url += "/"+ this.selekcija;
+		}
+
+		// Fetch data from network
+
+		fetch(url)
+		.then((response)=>response.json())
+		.then(
+			(responseJson)=> {
+				runInAction(() => {
+					// save to cache
+					this.cache_tekme[this.selekcija] = responseJson.data;
+					// update data -> mobix will update the component
+					this.tekme = responseJson.data;
                     this.state = "done";
                 });
 			},
