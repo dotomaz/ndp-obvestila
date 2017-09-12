@@ -14,7 +14,7 @@ const AppDrawerNavigator = DrawerNavigator({
       screen: ObvestilaScreen,
       path: "all",
       navigationOptions: ({navigation}) => ({
-        title: "Vsa obvestila",
+        title: "Vse selekcije",
       }),
     },
     U7: { 

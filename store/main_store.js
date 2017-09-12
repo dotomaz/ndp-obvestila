@@ -218,6 +218,14 @@ class MainStore{
 
 		// read from cache
 
+
+		if( this.selekcija == "u7" || this.selekcija == "u9" ){
+			// update data -> mobix will update the component
+			this.tekme = [];
+			this.state = "done";
+			return;
+		}
+
 		if( typeof this.cache_tekme[this.selekcija] !== "undefined" ){
 			// update data -> mobix will update the component
 			this.tekme = this.cache_tekme[this.selekcija];
