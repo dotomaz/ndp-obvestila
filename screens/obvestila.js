@@ -119,6 +119,9 @@ import {observer} from "mobx-react";
 			let gosti = tEkipi[1].trim();
 			let headerStyle = function(domaci){
 				return ( domaci.toLowerCase().indexOf("polzela") >= 0) ? styles.tekmaHeaderDoma: styles.tekmaHeaderVGosteh;
+			}
+			let tekmaStyle = function(domaci){
+				return ( domaci.toLowerCase().indexOf("polzela") >= 0) ? styles.tekmaContainer2Doma: styles.tekmaContainer2VGosteh;
 			} 
 
 			return (
@@ -127,7 +130,7 @@ import {observer} from "mobx-react";
 						<View style={headerStyle(domaci)}>
 							<Text style={styles.tekmaHeaderTxt}>{rowData.selekcija.replace(/u/gi, "U - ")+" : "+rowData.igrisce}</Text>
 						</View>	
-						<View style={styles.tekmaContainer2}>
+						<View style={tekmaStyle(domaci)}>
 							<View style={styles.tekmaDoma}>
 								<Text style={styles.txtRight}>{domaci}</Text>
 							</View>
@@ -339,15 +342,16 @@ const styles = StyleSheet.create({
 	},
 
 
-	tekma: { padding:0 },
+	tekma: { margin:5 },
 	tekmaContainer: {},
 	tekmaHeaderDoma: { backgroundColor: "#cdffe4", paddingTop: 5, paddingRight: 5, paddingBottom: 5, paddingLeft: 15},
 	tekmaHeaderVGosteh: { backgroundColor: "#ffc9c9", paddingTop: 5, paddingRight: 5, paddingBottom: 5, paddingLeft: 15},
-	tekmaHeaderTxt: { textAlign: "left", fontSize:17},
-	tekmaContainer2: { flexDirection: "row"},
-	tekmaDoma: { flex: 1,  paddingTop: 20, paddingBottom: 20, paddingRight: 10 },
-	tekmaGosti: { flex:1, paddingTop: 20, paddingBottom: 20, paddingLeft: 10 },
-	tekmaVs: { flex:0, paddingTop: 20, paddingBottom: 20 },
+	tekmaHeaderTxt: { textAlign: "center", fontSize:17},
+	tekmaContainer2Doma: { backgroundColor: "#cdffe4", flexDirection: "row"},
+	tekmaContainer2VGosteh: { backgroundColor: "#ffc9c9", flexDirection: "row"},
+	tekmaDoma: { flex: 1,  paddingTop: 10, paddingBottom: 20, paddingRight: 10 },
+	tekmaGosti: { flex:1, paddingTop: 10, paddingBottom: 20, paddingLeft: 10 },
+	tekmaVs: { flex:0, paddingTop: 10, paddingBottom: 20 },
 	txtRight: {textAlign: "right", fontWeight: "bold", fontSize: 18},
 	txtLeft: {textAlign: "left", fontWeight: "bold", fontSize: 18},
 	tekmaSelekcija: {paddingTop: 10},

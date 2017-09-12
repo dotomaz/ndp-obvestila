@@ -21,7 +21,7 @@ class MainStore{
 	@action reload(){
 
 		if( this.selectedGroupId == 1 ){
-			this.cache = {};
+			this.cache_tekme = {};
 			this.loadTekme();
 		}else{
 			this.cache = {};
@@ -92,7 +92,8 @@ class MainStore{
 					// insert header row for all notifications on the same day
 					out.push({
 						type: "header",
-						text: this.formatDate(el.date)
+						text: ( this.selectedGroupId == 1 ) ? this.formatDate(el.date) +" ob "+ this.formatTime(el.date) : 
+														  this.formatDate(el.date)
 					});
 
 					dd = td;
