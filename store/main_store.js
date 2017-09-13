@@ -69,7 +69,7 @@ class MainStore{
 
 			list.forEach((el, i)=>{
 				let td = this.getCompareSateString(el.date);
-				console.log(td, dd);
+				//console.log(td, dd);
 				if( td != dd){
 					// insert header row for all notifications on the same day
 					out.push({
