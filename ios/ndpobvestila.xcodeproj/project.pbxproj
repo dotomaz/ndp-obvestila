@@ -42,11 +42,12 @@
 		734990C41F65CA0300D90679 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 734990BE1F65C9C400D90679 /* Foundation.ttf */; };
 		734990C51F65CA0300D90679 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 734990BD1F65C9C400D90679 /* MaterialCommunityIcons.ttf */; };
 		734990C61F65CA0300D90679 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 734990B71F65C98700D90679 /* MaterialIcons.ttf */; };
-		734990C71F65CA0300D90679 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 734990BA1F65C9C300D90679 /* MaterialIcons.ttf */; };
 		734990C81F65CA0300D90679 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 734990B81F65C9C300D90679 /* Octicons.ttf */; };
 		734990C91F65CA0300D90679 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 734990BB1F65C9C400D90679 /* SimpleLineIcons.ttf */; };
 		734990CA1F65CA0300D90679 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 734990BF1F65C9C400D90679 /* Zocial.ttf */; };
 		734990CC1F65CA7600D90679 /* logo-big2.png in Resources */ = {isa = PBXBuildFile; fileRef = 734990CB1F65CA7600D90679 /* logo-big2.png */; };
+		73A07B441F6C5518006AD974 /* DeviceInfo2.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A07B421F6C5517006AD974 /* DeviceInfo2.m */; };
+		73A07B451F6C5518006AD974 /* DeviceInfo2.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A07B421F6C5517006AD974 /* DeviceInfo2.m */; };
 		73ECEA2B1F6328B400EDD59B /* RCTPushNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 73ECEA0B1F6328B400EDD59B /* RCTPushNotificationManager.m */; };
 		73ECEA2C1F6328B500EDD59B /* RCTPushNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 73ECEA0B1F6328B400EDD59B /* RCTPushNotificationManager.m */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -318,6 +319,8 @@
 		734990CB1F65CA7600D90679 /* logo-big2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-big2.png"; path = "../img/logo-big2.png"; sourceTree = "<group>"; };
 		738D2D471F69AC0200E4B91A /* icon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-1024.png"; path = "../img/icon-1024.png"; sourceTree = "<group>"; };
 		738F499A1F62FE570096B6BA /* ndpobvestila.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ndpobvestila.entitlements; path = ndpobvestila/ndpobvestila.entitlements; sourceTree = "<group>"; };
+		73A07B421F6C5517006AD974 /* DeviceInfo2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DeviceInfo2.m; path = ../Libraries/DeviceInfo2/DeviceInfo2.m; sourceTree = "<group>"; };
+		73A07B431F6C5518006AD974 /* DeviceInfo2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DeviceInfo2.h; path = ../Libraries/DeviceInfo2/DeviceInfo2.h; sourceTree = "<group>"; };
 		73ECEA0B1F6328B400EDD59B /* RCTPushNotificationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RCTPushNotificationManager.m; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotificationManager.m"; sourceTree = "<group>"; };
 		73ECEA2A1F6328B400EDD59B /* RCTPushNotificationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RCTPushNotificationManager.h; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotificationManager.h"; sourceTree = "<group>"; };
 		73EF77181F5C8C8D00C6ACAA /* icon-58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-58.png"; path = "../img/icon-58.png"; sourceTree = "<group>"; };
@@ -479,6 +482,8 @@
 				738D2D471F69AC0200E4B91A /* icon-1024.png */,
 				73EF77391F5C8C8E00C6ACAA /* icon-512.png */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				73A07B431F6C5518006AD974 /* DeviceInfo2.h */,
+				73A07B421F6C5517006AD974 /* DeviceInfo2.m */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -517,6 +522,13 @@
 				5E9157351DD0AC6500FF2AA8 /* libRCTAnimation.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		73A07B3F1F6C5259006AD974 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		73A6FF4A1F5C605800E54B11 /* Recovered References */ = {
@@ -582,6 +594,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				A3859C71CD8043CBBDBAE6D0 /* Resources */,
 				73A6FF4A1F5C605800E54B11 /* Recovered References */,
+				73A07B3F1F6C5259006AD974 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -697,7 +710,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 610;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -1027,7 +1040,6 @@
 				734990C41F65CA0300D90679 /* Foundation.ttf in Resources */,
 				734990C51F65CA0300D90679 /* MaterialCommunityIcons.ttf in Resources */,
 				734990C61F65CA0300D90679 /* MaterialIcons.ttf in Resources */,
-				734990C71F65CA0300D90679 /* MaterialIcons.ttf in Resources */,
 				734990C81F65CA0300D90679 /* Octicons.ttf in Resources */,
 				734990C91F65CA0300D90679 /* SimpleLineIcons.ttf in Resources */,
 				734990CA1F65CA0300D90679 /* Zocial.ttf in Resources */,
@@ -1100,6 +1112,7 @@
 			files = (
 				73ECEA2B1F6328B400EDD59B /* RCTPushNotificationManager.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				73A07B451F6C5518006AD974 /* DeviceInfo2.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1110,6 +1123,7 @@
 			files = (
 				73ECEA2C1F6328B500EDD59B /* RCTPushNotificationManager.m in Sources */,
 				2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */,
+				73A07B441F6C5518006AD974 /* DeviceInfo2.m in Sources */,
 				2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1174,6 +1188,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ndpobvestila.app/ndpobvestila";
 			};
@@ -1200,6 +1215,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ndpobvestila.app/ndpobvestila";
 			};
@@ -1382,20 +1398,30 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1423,13 +1449,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1437,6 +1471,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

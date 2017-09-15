@@ -6,12 +6,23 @@ import {
 	Image, 
 	ListView,
 	ActivityIndicator,
-	TouchableHighlight
+	TouchableHighlight,
+	Dimensions,
+	PixelRatio,
+	Platform,
+	NativeModules
 } from 'react-native';
 
 import { Header, ButtonGroup } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 import {observer} from "mobx-react";
+
+const Device = Dimensions.get('window');
+const landscape = Device.width > Device.height;
+const iPhoneX = landscape ? Device.height == 375 && Device.width == 812 : Device.width == 375 && Device.height == 812;
+
+var NativeDeviceInfo2 = require('NativeModules').DeviceInfo2;
+
 
 @observer class ObvestilaScreen extends React.Component {
 
@@ -28,7 +39,12 @@ import {observer} from "mobx-react";
 		this.state = {
 			selectedIndex: 0
 		}
-		this.updateGroupIndex = this.updateGroupIndex.bind(this)
+		this.updateGroupIndex = this.updateGroupIndex.bind(this);
+
+
+		console.log("iPhoneX", iPhoneX); 
+		console.log(Dimensions.get('window').width +" x "+ Dimensions.get('window').height);
+
 	}  
 
 	componentWillMount() {
@@ -191,11 +207,13 @@ import {observer} from "mobx-react";
 
 
 			<View style={styles.container}>
-				<Header 
+				<Header
+					statusBarProps={{ barStyle: 'light-content' }} 
 					backgroundColor="#f00"
 					leftComponent={{ 
 						icon: 'menu', 
-						color: '#fff', 
+						color: '#fff',
+						iconStyle: { marginBottom: 8 }, 
 						onPress:() => {
 							this.props.navigation.navigate("DrawerOpen"); 
 						} 
@@ -207,7 +225,7 @@ import {observer} from "mobx-react";
 					      onPress={this.updateGroupIndex}
 					      selectedIndex={store.selectedGroupId}
 					      buttons={["Obvestila","Tekme"]}
-					      containerStyle={{height: 22, width: 250, backgroundColor: "#f11"}}
+					      containerStyle={{height: 30, width: 200, backgroundColor: "#f11", borderColor:"#fff", borderRadius:5}}
 					      textStyle={{ color: "#fff"}}
 					      selectedBackgroundColor="#fff"
 					      disableSelected={true}
@@ -218,12 +236,17 @@ import {observer} from "mobx-react";
 
 					rightComponent={{ 
 						icon: 'autorenew', 
-						color: '#fff', 
+						color: '#fff',
+						iconStyle: { marginBottom: 8 },  
 						onPress:() => {
 							const {store} = this.props.screenProps;
 							store.reload();
 						} 
 					}}
+
+					outerContainerStyles={{  paddingBottom: 5}}
+					innerContainerStyles={{  paddingTop: 25}}
+
 				/>
 
 				<ListView style={styles.contents} dataSource={store.obvestilaDS} renderRow={ this.renderRow } enableEmptySections={true} {...this.props}/>
@@ -241,7 +264,7 @@ const styles = StyleSheet.create({
 		backgroundColor: "#fcc",
 		flex:1,
 		padding: 0,
-		flexDirection:"column"
+		flexDirection:"column",
 	},
 
 	icon:{
