@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -315,6 +316,7 @@
 		734990BF1F65C9C400D90679 /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		734990C01F65C9C400D90679 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		734990CB1F65CA7600D90679 /* logo-big2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-big2.png"; path = "../img/logo-big2.png"; sourceTree = "<group>"; };
+		738D2D471F69AC0200E4B91A /* icon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-1024.png"; path = "../img/icon-1024.png"; sourceTree = "<group>"; };
 		738F499A1F62FE570096B6BA /* ndpobvestila.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ndpobvestila.entitlements; path = ndpobvestila/ndpobvestila.entitlements; sourceTree = "<group>"; };
 		73ECEA0B1F6328B400EDD59B /* RCTPushNotificationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RCTPushNotificationManager.m; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotificationManager.m"; sourceTree = "<group>"; };
 		73ECEA2A1F6328B400EDD59B /* RCTPushNotificationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RCTPushNotificationManager.h; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotificationManager.h"; sourceTree = "<group>"; };
@@ -474,6 +476,7 @@
 				73EF77371F5C8C8D00C6ACAA /* icon-120.png */,
 				734990B61F65C8C700D90679 /* logo-big2.png */,
 				73EF773A1F5C8C8E00C6ACAA /* icon-180.png */,
+				738D2D471F69AC0200E4B91A /* icon-1024.png */,
 				73EF77391F5C8C8E00C6ACAA /* icon-512.png */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,

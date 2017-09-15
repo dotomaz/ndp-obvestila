@@ -127,10 +127,10 @@ import {observer} from "mobx-react";
 			return (
 				<View style={styles.tekma}>
 					<View style={styles.tekmaContainer}>
-						<View style={headerStyle(domaci)}>
+						<View style={styles.tekmaHeader}>
 							<Text style={styles.tekmaHeaderTxt}>{rowData.selekcija.replace(/u/gi, "U - ")+" : "+rowData.igrisce}</Text>
 						</View>	
-						<View style={tekmaStyle(domaci)}>
+						<View style={styles.tekmaContainer2}>
 							<View style={styles.tekmaDoma}>
 								<Text style={styles.txtRight}>{domaci}</Text>
 							</View>
@@ -207,7 +207,7 @@ import {observer} from "mobx-react";
 					      onPress={this.updateGroupIndex}
 					      selectedIndex={store.selectedGroupId}
 					      buttons={["Obvestila","Tekme"]}
-					      containerStyle={{height: 30, width: 250, backgroundColor: "#f11"}}
+					      containerStyle={{height: 22, width: 250, backgroundColor: "#f11"}}
 					      textStyle={{ color: "#fff"}}
 					      selectedBackgroundColor="#fff"
 					      disableSelected={true}
@@ -344,11 +344,9 @@ const styles = StyleSheet.create({
 
 	tekma: { margin:5 },
 	tekmaContainer: {},
-	tekmaHeaderDoma: { backgroundColor: "#cdffe4", paddingTop: 5, paddingRight: 5, paddingBottom: 5, paddingLeft: 15},
-	tekmaHeaderVGosteh: { backgroundColor: "#ffc9c9", paddingTop: 5, paddingRight: 5, paddingBottom: 5, paddingLeft: 15},
-	tekmaHeaderTxt: { textAlign: "center", fontSize:17},
-	tekmaContainer2Doma: { backgroundColor: "#cdffe4", flexDirection: "row"},
-	tekmaContainer2VGosteh: { backgroundColor: "#ffc9c9", flexDirection: "row"},
+	tekmaHeader: { paddingTop: 5, paddingRight: 5, paddingBottom: 5, paddingLeft: 10},
+	tekmaHeaderTxt: { textAlign: "left", fontSize:16},
+	tekmaContainer2: { flexDirection: "row"},
 	tekmaDoma: { flex: 1,  paddingTop: 10, paddingBottom: 20, paddingRight: 10 },
 	tekmaGosti: { flex:1, paddingTop: 10, paddingBottom: 20, paddingLeft: 10 },
 	tekmaVs: { flex:0, paddingTop: 10, paddingBottom: 20 },
