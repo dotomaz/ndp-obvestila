@@ -1,6 +1,7 @@
 package com.ndpobvestila;
 
 import com.facebook.react.ReactActivity;
+import android.content.Intent;
 
 public class MainActivity extends ReactActivity {
 
@@ -12,4 +13,10 @@ public class MainActivity extends ReactActivity {
     protected String getMainComponentName() {
         return "ndpobvestila";
     }
+
+   @Override
+   public void onNewIntent (Intent intent) {
+     super.onNewIntent(intent);
+       setIntent(intent);
+   }      
 }

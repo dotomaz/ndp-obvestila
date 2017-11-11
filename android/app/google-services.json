@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1033629730222",
+    "firebase_url": "https://nd-polzela.firebaseio.com",
+    "project_id": "nd-polzela",
+    "storage_bucket": "nd-polzela.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033629730222:android:3282e6c56ddc381f",
+        "android_client_info": {
+          "package_name": "com.ndpobvestila"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1033629730222-niv0sf9b7kuk9pgbmcno1k7tvrat6f8t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoJBJdhqCgTy2eeUT7bTiCnhUtxowCikI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
